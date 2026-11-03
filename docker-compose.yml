@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    container_name: storage_backend
+    restart: always
+    ports:
+      - "8000:8000"
+    volumes:
+      # Главная магия: папка с твоего сервера/ПК монтируется внутрь контейнера
+      # Слева путь на твоем сервере, справа путь внутри контейнера (/app/storage)
+      - ./storage_data:/app/storage
+
+  frontend:
+    build: ./frontend
+    container_name: storage_frontend
+    restart: always
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
