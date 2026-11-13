@@ -1,97 +1,23 @@
-<script setup lang="ts">
-import { onMounted } from 'vue';
-
-onMounted(async () => {
-  console.log('test onMounted')
-})
-</script>
-
 <template>
-  <div class="item">
-    <div class="details">
-    <h3>
-      <!-- <i>
-        <slot name="icon">TEST</slot>
-      </i> -->
-        <slot name="heading">Добро пожаловать в моё приложение! Выбери слот:</slot>
-    </h3>
-    </div>
+  <div class="empty-home">
+    <h2>Добро пожаловать в Cloudly!</h2>
+    <p>Выберите папку в сайдбаре слева или загрузите первый файл.</p>
   </div>
 </template>
 
 <style scoped>
-.item {
-  margin-top: 2rem;
+.empty-home {
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  position: relative;
+  align-items: center;
+  justify-content: center;
+  height: 60vh;
+  color: #6b7280;
+  text-align: center;
 }
 
-.details {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  gap: 12px;
-}
-
-i {
-  display: flex;
-  place-items: center;
-  place-content: center;
-  width: 32px;
-  height: 32px;
-
-  color: var(--color-text);
-}
-
-h3 {
-  font-size: 1.2rem;
-  font-weight: 500;
-  margin-bottom: 0.4rem;
-  color: var(--color-heading);
-}
-
-@media (min-width: 1024px) {
-  .item {
-    margin-top: 0;
-  }
-
-  i {
-    top: calc(50% - 25px);
-    left: -26px;
-    position: absolute;
-    border: 1px solid var(--color-border);
-    background: var(--color-background);
-    border-radius: 8px;
-    width: 50px;
-    height: 50px;
-  }
-
-  .item:before {
-    content: ' ';
-    border-left: 1px solid var(--color-border);
-    position: absolute;
-    left: 0;
-    bottom: calc(50% + 25px);
-    height: calc(50% - 25px);
-  }
-
-  .item:after {
-    content: ' ';
-    border-left: 1px solid var(--color-border);
-    position: absolute;
-    left: 0;
-    top: calc(50% + 25px);
-    height: calc(50% - 25px);
-  }
-
-  .item:first-of-type:before {
-    display: none;
-  }
-
-  .item:last-of-type:after {
-    display: none;
-  }
+.empty-home h2 {
+  color: #374151;
+  margin-bottom: 8px;
 }
 </style>
