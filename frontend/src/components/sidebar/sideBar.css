@@ -1,0 +1,159 @@
+.sidebar {
+  width: 260px;
+  height: 100vh;
+  background-color: #fff;
+  border-right: 1px solid #eaeaea;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.logo-area {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #1a1a1a;
+  margin-bottom: 24px;
+}
+
+.logo-icon {
+  background: #4f46e5;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 8px;
+}
+
+.add-btn {
+  width: 100%;
+  background-color: #4f46e5;
+  color: white;
+  border: none;
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-weight: 500;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.2);
+  transition: background 0.2s;
+}
+
+.add-btn:hover {
+  background-color: #4338ca;
+}
+
+.nav-section {
+  margin-bottom: 24px;
+}
+
+.section-title {
+  font-size: 11px;
+  font-weight: 600;
+  color: #9ca3af;
+  letter-spacing: 0.05em;
+  display: block;
+  margin-bottom: 8px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-item {
+  padding: 10px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #4b5563;
+  font-size: 14px;
+  font-weight: 500;
+  transition:
+    background 0.15s,
+    color 0.15s;
+}
+
+.nav-item:hover,
+.nav-item.active {
+  background-color: #e0e7ff;
+  color: #4f46e5;
+}
+
+.folders-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.add-folder-btn {
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  color: #6b7280;
+  padding: 0 4px;
+}
+
+.add-folder-btn:hover {
+  color: #111;
+}
+
+.folders-list {
+  max-height: 250px;
+  overflow-y: auto;
+}
+
+.folder-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #4b5563;
+}
+
+.folder-item:hover {
+  background-color: #f3f4f6;
+  color: #111;
+}
+
+.folder-count {
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+.folder-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.delete-folder-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: #9ca3af;
+  opacity: 0;
+  transition:
+    opacity 0.15s ease,
+    color 0.15s ease;
+}
+
+.folder-item:hover .delete-folder-btn {
+  opacity: 1;
+}
+
+.delete-folder-btn:hover {
+  background-color: #fee2e2;
+  color: #ef4444;
+}

@@ -9,6 +9,9 @@ import uuid
 class DeleteFileRequest(BaseModel):
     file_path: str  # Например: "shouldn't cry/Shoudln't cry.wav"
 
+class FolderCreateRequest(BaseModel):
+    name: str = "Новая папка"
+
 app = FastAPI()
 
 origins = [
@@ -188,4 +191,38 @@ def delete_file(folder: str, file_id: str):
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=f"Ошибка удаления: {str(e)}"
+        )
+
+@app.post('/api/folders', status_code=status.HTTP_201_CREATED)
+def create_folder(payload: FolderCreateRequest = FolderCreateRequest()):
+    if not os.path.exists(BASE_DIR): 
+        os.makedirs(BASE_DIR, exist_ok=True)
+
+    base_name = payload.name
+    folder_name = base_name
+    counter = 1
+
+    folder_path = os.path.join(BASE_DIR, folder_name)
+    while os.path.exists(folder_path):
+        folder_name = f"{base_name} ({counter})"
+        folder_path = os.path.join(BASE_DIR, folder_name)
+        counter +=1
+
+    try:
+        os.makedirs(folder_path, exist_ok=False)
+
+        folder_id = str(uuid.uuid5(uuid.NAMESPACE_URL, f"folder:{folder_name}"))
+
+        return {
+            "status": 'success',
+            "folder": {
+                "id": folder_id,
+                "name": folder_name,
+            }
+        }
+
+    except Exception as e: 
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Не удалось создать папку {str(e)}"
         )
